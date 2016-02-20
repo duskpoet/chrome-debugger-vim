@@ -25,7 +25,11 @@ try
       wstream.write "| Function name | Parameters | Return |\n"
       wstream.write "| ------------- | ---------- | ------ |\n"
       for fdesc in funcs
-        wstream.write "| #{fdesc.name} | #{fdesc.parameters.join(' ')} |
+        params = fdesc.parameters
+          .map (param) -> "*#{param[0]}* #{param[1]}"
+          .join(", ")
+
+        wstream.write "| #{fdesc.name} | #{params} |
           #{fdesc.return_type} |\n"
       wstream.end null, null, ->
         process.exit()
