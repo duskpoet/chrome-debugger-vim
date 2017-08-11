@@ -1,3 +1,3 @@
 function! ChromeStart()
-    let g:chrome_rpc_id = rpcstart('node', ['index.js'])
+    let g:chrome_rpc_id = jobstart(['node', 'index.js'], {'rpc': v:true})
 endfunction
